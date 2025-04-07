@@ -16,6 +16,9 @@ jobs:
       - name: Generate metadata
         run: cargo install subxt-cli && subxt metadata -f bytes > polkadot.scale
 
+      - name: Install .env .keyfile
+        run: cp .env.example .env && cp .keyfile.example .keyfile
+
       - name: Build binary
         run: cargo build --release
 
