@@ -13,6 +13,7 @@ Full problem statement in Leemo's [thread](https://x.com/LeemoXD/status/19092018
 wget -qO /usr/local/bin/paypig https://github.com/rotkonetworks/paypig/releases/latest/download/paypig-x86_64
 chmod +x /usr/local/bin/paypig
 mkdir -p /etc/paypig && cp .env .keyfile /etc/paypig && chmod 600 /etc/paypig/.keyfile
+cargo install subxt-cli && subxt metadata -f bytes > /etc/paypig/polkadot.scale
 (crontab -l 2>/dev/null; echo "0 0 1-7,15-21 * 3 cd /etc/paypig && /usr/local/bin/paypig pay >> /var/log/paypig.log 2>&1") | sort -u | crontab -
 ```
 
