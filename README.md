@@ -5,10 +5,10 @@ Scans treasury proposals, filters for valid/eligible ones, and submits payouts v
 
 ## Install
 ```sh
-#!/bin/sh
 wget -qO /usr/local/bin/paypig https://github.com/rotkonetworks/paypig/releases/latest/download/paypig-x86_64
 chmod +x /usr/local/bin/paypig
-(crontab -l 2>/dev/null; echo '0 0 1-7,15-21 * 3 /usr/local/bin/paypig pay >> /var/log/paypig.log 2>&1') | sort -u | crontab -
+mkdir -p /etc/paypig && cp .env .keyfile /etc/paypig && chmod 600 /etc/paypig/.keyfile
+(crontab -l 2>/dev/null; echo "0 0 1-7,15-21 * 3 cd /etc/paypig && /usr/local/bin/paypig pay >> /var/log/paypig.log 2>&1") | sort -u | crontab -
 ```
 
 ## Development
