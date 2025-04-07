@@ -18,12 +18,16 @@ jobs:
           rust-version: stable
           targets: x86_64-unknown-linux-gnu
 
+      - name: Generate metadata
+        run: cargo install subxt-cli && subxt metadata -f bytes > polkadot.scale
+
       - name: Build binary
         run: cargo build --release --target x86_64-unknown-linux-gnu
+
+      - name: Add architechture in binary name
+        run: mv target/x86_64-unknown-linux-gnu/release/paypig paypig-x86_64
 
       - name: Upload release binary
         uses: softprops/action-gh-release@v2
         with:
-          files: target/x86_64-unknown-linux-gnu/release/paypig
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          files: paypig-x86_64
