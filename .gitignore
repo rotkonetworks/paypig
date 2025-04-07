@@ -1,0 +1,4 @@
+/target
+.env
+.keyfile
+polkadot.scale

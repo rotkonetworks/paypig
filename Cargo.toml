@@ -1,0 +1,13 @@
+[package]
+name = "paypig"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+subxt = { version = "0.41", features=["jsonrpsee"]}
+subxt-signer = { version = "0.41", features = ["sr25519", "subxt"] }
+tokio = { version = "1", features = ["full"] }
+clap = { version = "4", features = ["derive"] }
+dotenvy = "0.15"
+anyhow = "1"
+futures = "0.3.31"
